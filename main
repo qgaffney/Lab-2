@@ -1,0 +1,22 @@
+import random
+month_days = {"Jan": 5, "Jan":26, "Mar":4, "Mar":13, "Apr":20, "Apr":25, "May":5, "Jul":31, "Aug":17, "Sep":26, "Oct":21, "Dec":28}
+
+def random_bday():
+  random_month = random.choice(list(month_days.keys()))
+  random_day = random.randit(1, month_days[random_month])
+  return (random_month, random_day)
+
+def list_of_bdays(num_people):
+  return [random_bday() for _ in range(num_people)]
+
+def check_for_match(bday_list):
+  match = False
+  for i in range(len(bday_list) - 1):
+    for bday in bday_list [i+1:]:
+      if bday_list[i][0] == bday[0] and bday_list[i][1] == bday[1]:
+        match = True
+        break
+  return match
+
+def num_matches(num_people, num_trials):
+  num_matches = sum([chech_for_match(list_of_bdays(num_people)) for _ in range(num_trials)] / num_trials
